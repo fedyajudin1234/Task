@@ -1,0 +1,20 @@
+﻿BookCollection
+1.0.0.0
+
+winexe
+C#
+.cs
+C:\Users\Фёдор\OneDrive\Рабочий стол\C# Lessons\BookCollection\obj\Debug\net6.0-windows\
+BookCollection
+none
+false
+TRACE;DEBUG;NET;NET6_0;NETCOREAPP
+C:\Users\Фёдор\OneDrive\Рабочий стол\C# Lessons\BookCollection\App.xaml
+6-182928923
+
+22533658357
+223-389436548
+Views\AdditionalViewVindow.xaml;Views\AddNewAuthorWindow.xaml;Views\AddNewBookWindow.xaml;Views\EditAuthorWindow.xaml;Views\EditBookWindow.xaml;Views\MainWindow.xaml;
+
+False
+

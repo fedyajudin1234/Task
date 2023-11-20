@@ -1,0 +1,27 @@
+﻿<Window x:Class="BookCollection.Views.EditBookWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookCollection.Views"
+        mc:Ignorable="d"
+        Title="EditBookWindow" Height="300" Width="400"
+        Name="UpdateBookWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250">
+            <TextBlock Text="Book's name:"></TextBlock>
+            <TextBox Name="Book_Name_Text_Box" Text="{Binding Book_Name}"></TextBox>
+            <TextBlock Text="Year:"></TextBlock>
+            <TextBox Name="Year_Text_Box" Text="{Binding Year}"></TextBox>
+            <TextBlock Text="Genre:"></TextBlock>
+            <ComboBox Name="Genre_Combo_Box" ItemsSource="{Binding Genre}" SelectedItem="{Binding Genre}"></ComboBox>
+            <TextBlock Text="Author:"></TextBlock>
+            <ComboBox Name="Author_Combo_Box" ItemsSource="{Binding AllAuthors}" DisplayMemberPath="Surname" SelectedItem="{Binding Author}"></ComboBox>
+        </StackPanel>
+        <Button Grid.Row="1" Content="Update" Command="{Binding UpdateBook}" CommandParameter="{Binding ElementName=UpdateBookWindow}"></Button>
+    </Grid>
+</Window>

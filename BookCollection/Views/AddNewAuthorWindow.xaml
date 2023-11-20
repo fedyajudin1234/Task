@@ -1,0 +1,23 @@
+﻿<Window x:Class="BookCollection.Views.AddNewAuthorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookCollection.Views"
+        mc:Ignorable="d"
+        Title="AddNewAuthorWindow" Height="300" Width="400"
+        Name="AddAuthor">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250">
+            <TextBlock Text="Name:"></TextBlock>
+            <TextBox Name="Name_Text_Box" Text="{Binding Name}"></TextBox>
+            <TextBlock Text="Surname:"></TextBlock>
+            <TextBox Name="Surname_Text_Box" Text="{Binding Surname}"></TextBox>
+        </StackPanel>
+        <Button Grid.Row="1" Content="Insert" Command="{Binding AddNewAuthor}" CommandParameter="{Binding ElementName=AddAuthor}"></Button>
+    </Grid>
+</Window>

@@ -1,0 +1,77 @@
+﻿<Window x:Class="BookCollection.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookCollection"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" SelectedItem="{Binding SelectedTabItem}">
+            <TabItem Name="BookTab">
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Edit" Command="{Binding EditItem}"></MenuItem>
+                        <MenuItem Header="Delete" Command="{Binding DeleteItem}"></MenuItem>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <TabItem.Header>
+                    <TextBlock>Books</TextBlock>
+                </TabItem.Header>
+                <ListView Name="AllBooks_ListView" ItemsSource="{Binding AllBooks}" SelectedItem="{Binding SelectedBook}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Book_Name}" Header="Name" Width="Auto"></GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Year}" Header="Year" Width="Auto"></GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Genre}" Header="Genre" Width="Auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Name="Color" Background="AliceBlue" Text="{Binding Genre}"/>
+                                        <DataTemplate.Triggers>
+                                            <DataTrigger Binding="{Binding Genre}">
+                                                <Setter TargetName="Color"  Value="red" />
+                                            </DataTrigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=BookAuthorSurname.Surname}" Header="Author" Width="Auto"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Name="AuthorTab">
+                <TabItem.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Edit" Command="{Binding EditItem}"></MenuItem>
+                        <MenuItem Header="Delete" Command="{Binding DeleteItem}"></MenuItem>
+                    </ContextMenu>
+                </TabItem.ContextMenu>
+                <TabItem.Header>
+                    <TextBlock>Authors</TextBlock>
+                </TabItem.Header>
+                <ListView Name="AllAuthors_ListView" ItemsSource="{Binding AllAuthors}" SelectedItem="{Binding SelectedAuthor}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="Auto"></GridViewColumn>
+                            <GridViewColumn Header="Surname" DisplayMemberBinding="{Binding Path=Surname}" Width="Auto"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="Add_Book_Button" Content="Add Book" Command="{Binding OpenNewBook}"></Button>
+            <Button Name="Add_Author_Button" Content="Add Author" Command="{Binding OpenNewAuthor}"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <CheckBox Name="LanguageBox" Grid.Row="0" HorizontalAlignment="Right" Checked="LanguageBox_Checked">
+                <TextBlock Text="Switch to Russian"></TextBlock>
+            </CheckBox>
+        </StackPanel>
+    </Grid>
+</Window>
